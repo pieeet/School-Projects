@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 450px;
+    heigth: 450px;
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    margin: 10% auto;
+    
+}
+
+.square0 {
+    border-right: solid 2px black;
+    border-bottom: solid 2px black;
+}
+
+.square1 {
+    border-bottom: solid 2px black;
+}
+
+.square2 {
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+}
+
+.square3 {
+    border-right: solid 2px black;
+}
+
+.square5 {
+    border-left: solid 2px black;
+}
+
+.square6 {
+    border-top: solid 2px black;
+    border-right: solid 2px black;
+}
+
+.square7 {
+    border-top: solid 2px black;
+}
+
+.square8 {
+    border-top: solid 2px black;
+    border-left: solid 2px black;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
