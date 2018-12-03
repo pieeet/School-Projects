@@ -1,49 +1,59 @@
-class Field {
-    constructor(fields) {
-        this.field = fields;
-    }
+let Field = {
 
     generateField() {
         let container = document.getElementById("cont");
 
-        for (let i = 0; i <= this.field.length; i++) {
+        for (let i = 0; i <= fields.length; i++) {
             let divTag = document.createElement("div");
             divTag.setAttribute("class", "field square" + i);
             divTag.setAttribute("id", i);
             container.appendChild(divTag);
             divTag.addEventListener('click', this.playerClick, false);
         }
-    }
+    },
 
     playerClick(square) {
-        let element = document.getElementById(square.target.id);
-        let imgTag = document.createElement("img");
-        if (playerTurn === 0) {
-            imgTag.setAttribute("src", "x.png");
-            element.appendChild(imgTag);
+        if (gameOver) return;
+        if (GameData.checkOccupied(square.target.id)) {
+            let element = document.getElementById(square.target.id);
+            if (playerTurn === 0) {
+                
+                document.querySelector("h1").innerHTML = "Circle's turn";
 
-            fields[square.target.id] = 0;
+                element.style.backgroundImage = "url(x.png)";
 
-            if (GameData.checkWin()) {
-                console.log("winner");
-            } else {
-                console.log("loser");
-            }
-            playerTurn = 1;
-        } else {
-            imgTag.setAttribute("src", "o.png");
-            element.appendChild(imgTag);
+                fields[square.target.id] = 0;
 
-            fields[square.target.id] = 1;
+                if (GameData.checkWin()) {
+                    gameOver = true;
+                    document.querySelector("h1").innerHTML = "Cross wins!";
+                }
 
-            if (GameData.checkWin()) {
-                console.log("winner");
-            } else {
-                console.log("loser");
-            }
-            playerTurn = 0;
+                if (GameData.checkDraw()) { 
+                    gameOver = true;
+                    document.querySelector("h1").innerHTML = "Draw!";
+                }
+
+                playerTurn = 1;
+                
+                Field.aiMove();
+            } 
         }
+    },
+
+    aiMove: function() {
+
+        document.querySelector("h1").innerHTML = "Cross's turn";
+
+        let selectedMove = Computer.bestMove();
+        console.log(selectedMove);
+        document.getElementById(selectedMove).style.backgroundImage = "url(o.png)";
+        fields[selectedMove] = 1;
+
+        playerTurn = 0;
+
     }
+
 }
 
 
