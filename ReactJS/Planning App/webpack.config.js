@@ -10,7 +10,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
+                test: /\.js$/,
                 exclude: /(node_modules)/,
                 use: {
                     loader: "babel-loader",
@@ -18,6 +18,21 @@ module.exports = {
                         presets: ["env", "stage-0", "react"]
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"}
+                ]
+            },
+            {
+                test: /\.sass$/,
+                use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"},
+                    {loader: "sass-loader"}
+                ]
             }
         ]
     }
