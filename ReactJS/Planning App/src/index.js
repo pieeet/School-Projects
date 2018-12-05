@@ -3,10 +3,16 @@ import ReactDOM from "react-dom"
 import "./style.sass"
 
 class Image extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            title: "Lake Tahoe in California"
+        }
+    }
     render() {
         return (
             <div>
-                <h1>{this.props.title}</h1>
+                <h1>{this.state.title}</h1>
                 <p>{this.props.caption}</p>
                 <div id="image"></div>
             </div>
