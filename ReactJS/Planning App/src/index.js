@@ -2,15 +2,16 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./style.sass"
 
-class Message extends React.Component {
+class Image extends React.Component {
     render() {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <p>{this.props.message}</p>
+                <p>{this.props.caption}</p>
+                <div id="image"></div>
             </div>
         )
     }
 }
 
-ReactDOM.render(<Message title="Email Alex" message="Can you email him?"/>, document.getElementById("react-container"))
+ReactDOM.render(<Image title="Desolation Wilderness" caption="Wildnerness area in Lake Tahoe, California"/>, document.getElementById("react-container"))

@@ -33,6 +33,12 @@ module.exports = {
                     {loader: "css-loader"},
                     {loader: "sass-loader"}
                 ]
+            },
+            {
+                test: /\.jpeg$/,
+                use: [
+                    {loader: "url-loader"}
+                ]
             }
         ]
     }
