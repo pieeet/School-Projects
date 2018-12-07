@@ -1,7 +1,7 @@
 const color = require("colors");
 const readline = require('readline');
 
-// TEST
+// TEST 2
 
 
 const rl = readline.createInterface({
