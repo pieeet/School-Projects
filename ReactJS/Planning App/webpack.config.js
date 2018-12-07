@@ -1,15 +1,17 @@
 const path = require("path")
+const webpack = require("webpack")
 
 module.exports = {
-    mode: "development",
-    entry: "./src/index.js",
+    entry: [
+        "./src/index.js"
+    ],
     output: {
         filename: "bundle.js",
-        path: path.join(__dirname, "dist")
+        path: path.join(__dirname, "dist"),
     },
     devServer: {
-       contentBase: path.join(__dirname, "dist"),
-       port: 8080
+        contentBase: path.join(__dirname, "dist"),
+        port: 8080
     },
     module: {
         rules: [
@@ -24,13 +26,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: [
-                    {loader: "style-loader"},
-                    {loader: "css-loader"}
-                ]
-            },
-            {
                 test: /\.sass$/,
                 use: [
                     {loader: "style-loader"},
@@ -39,11 +34,20 @@ module.exports = {
                 ]
             },
             {
-                test: /\.jpeg$/,
+                test: /\.jpg$/,
                 use: [
                     {loader: "url-loader"}
                 ]
+            },
+            {
+
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "commons",
+            filename: "commons.bundle.js"
+        })
+    ]
 }
