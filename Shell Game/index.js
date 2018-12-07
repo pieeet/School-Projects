@@ -1,6 +1,8 @@
 const color = require("colors");
 const readline = require('readline');
 
+// TEST
+
 
 const rl = readline.createInterface({
     input: process.stdin,
